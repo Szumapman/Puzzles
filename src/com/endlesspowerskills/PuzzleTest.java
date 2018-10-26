@@ -280,4 +280,22 @@ public class PuzzleTest {
             //this is the expected result.
         }
     }
+
+    @Test
+    public void testFindMissingElement1() {
+        assertEquals(2, puzzle.findMissingElement1(new int[]{0,1,3,4}));
+        assertEquals(5, puzzle.findMissingElement1(new int[]{0,1,2,3,4}));
+        assertEquals(0, puzzle.findMissingElement1(new int[]{5,1,2,3,4}));
+        assertEquals(-1, puzzle.findMissingElement1(new int[]{0,-1,2,3,4}));
+        assertEquals(-1, puzzle.findMissingElement1(new int[]{0,1,2,3,6}));
+    }
+
+    @Test
+    public void testFindMissingElement2() {
+        assertEquals(2, puzzle.findMissingElement2(new int[]{0,1,3,4}));
+        assertEquals(5, puzzle.findMissingElement2(new int[]{0,1,2,3,4}));
+        assertEquals(0, puzzle.findMissingElement2(new int[]{5,1,2,3,4}));
+        assertEquals(-1, puzzle.findMissingElement2(new int[]{0,-1,2,3,4}));
+        assertEquals(-1, puzzle.findMissingElement2(new int[]{0,1,2,3,6}));
+    }
 }

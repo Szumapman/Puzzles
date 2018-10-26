@@ -6,9 +6,9 @@ import java.util.Arrays;
 public class Puzzle {
 
     /*  ------------------------------------
-        Reverse a String. If String == null or is empty we return empty string.
-        Using API
+        Reverse a String. If String == null or is an empty we return empty string.
     */
+    //  Using API
     public String reverseStringWithAPI(String stringToRevers){
         if(stringToRevers == null){
             return "";
@@ -57,7 +57,7 @@ public class Puzzle {
     }
 
      /* ------------------------------------
-        Is two strings are anagram? If any of String == null throw the illegalArgumentException
+        Are two strings anagram? If any of String == null throw the illegalArgumentException
      */
     public boolean isAnagram1(String s1, String s2){
         if(s1 == null || s2 == null){
@@ -237,7 +237,7 @@ public class Puzzle {
 
      /*  ------------------------------------
         Is palindrome?
-        The palindrome number is number witch when reversed is equal to the original number, for example: 121, 12321, -1221 etc..
+        The palindrome number is number which when reversed is equal to the original number, for example, 121, 12321, -1221 etc..
     */
     public boolean isPalindrome1(int number){
         number = Math.abs(number);
@@ -314,5 +314,37 @@ public class Puzzle {
         return number.equals(calculateNumber.toString());
     }
 
+     /*  ------------------------------------
+        Find a missing element. A Variable is int[] range <0,N>. Each element of the variable is unique.
+        The variable length = N.
+        Return -1 if any number in the variable is outside the range.
+    */
+     public int findMissingElement1(int[] array){
+         boolean[] missingFlag = new boolean[array.length+1];
+         for(int index : array){
+             if(index >= missingFlag.length || index < 0){
+                 return -1;
+             }
+             missingFlag[index] = true;
+         }
+         for(int i = 0; i < missingFlag.length; i++){
+             if(!missingFlag[i]){
+                 return i;
+             }
+         }
+         return -1;
+     }
 
+     public int findMissingElement2(int[] array){
+         // If the array can be very big, we should use long or BigInteger instead of int in sum and calculateSum.
+         int sum = (array.length + 1) * array.length / 2;
+         int calculateSum = 0;
+         for(int element : array){
+             if(element >= array.length + 1 || element < 0){
+                 return -1;
+             }
+             calculateSum += element;
+         }
+         return sum - calculateSum;
+     }
 }
